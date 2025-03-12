@@ -1,8 +1,7 @@
 package com.luv2code.springboot.cruddemo.service;
 
 import com.luv2code.springboot.cruddemo.entity.Employee;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -20,6 +19,16 @@ class EmployeeServiceImplTest {
     @InjectMocks
     EmployeeServiceImpl employeeServiceImpl;
 
+    @BeforeAll
+    public static void init(){
+        System.out.println("Before All");
+    }
+
+    @BeforeEach
+    public void initEach(){
+        System.out.println("Before Each");
+    }
+
     @Test
     void addEmployeeSuccessfully(){
         System.out.println("My first unit test");
@@ -32,6 +41,21 @@ class EmployeeServiceImplTest {
 
         Employee addEmployee= employeeService.save(employee);
         assertEquals(    1,addEmployee.getId());
+    }
+
+    @Test
+    public void dummyTest(){
+        System.out.println("Dummy test running");
+    }
+
+    @AfterAll
+    public static void destroy(){
+        System.out.println("After All");
+    }
+
+    @AfterEach
+    public void cleanUp(){
+        System.out.println("After Each");
     }
 
 
