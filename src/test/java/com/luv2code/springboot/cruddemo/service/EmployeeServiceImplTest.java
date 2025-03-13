@@ -34,8 +34,8 @@ class EmployeeServiceImplTest {
         System.out.println("My first unit test");
         Employee employee=new Employee();
         employee.setId(1);
-        employee.setEmail("neha@mail.com");
-        employee.setFirstName("neha");
+        employee.setEmail("john@mail.com");
+        employee.setFirstName("john");
         employee.setLastName("singh");
         when(employeeService.save(employee)).thenReturn(employee);
 
@@ -44,8 +44,10 @@ class EmployeeServiceImplTest {
     }
 
     @Test
-    public void dummyTest(){
-        System.out.println("Dummy test running");
+    public void deleteEmployeeSuccessfully(){
+        doNothing().when(employeeService).deleteById(1);
+        employeeService.deleteById(1);
+        verify(employeeService,times(1)).deleteById(1);
     }
 
     @AfterAll
